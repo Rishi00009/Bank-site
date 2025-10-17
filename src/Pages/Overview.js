@@ -1,77 +1,55 @@
-import Overviewimage from '../images/overviewimage.jpg'
-export default function Overview(){
+import bankLogo from '../images/banklogo.png';
+export default function Overview() {
 
-        const aboutContent = [
-  {
-    id: 1,
-    type: "intro",
-    title: "Intro Paragraph",
-    content: "Founded in 2012, AstraBank has emerged as one of India's fastest-growing digital banks, built on trust, innovation, and transparency. We combine cutting-edge technology with a human-first approach to simplify everyday banking for individuals, entrepreneurs, and enterprises alike."
-  },
-  {
-    id: 2,
-    type: "mission",
-    title: "Our Mission",
-    content: "To deliver seamless, secure, and inclusive financial experiences that empower people to save smarter, spend better, and achieve their goals confidently."
-  },
-  {
-    id: 3,
-    type: "vision", 
-    title: "Our Vision",
-    content: "To become India's most trusted digital-first bank — where every customer, regardless of background, has access to modern, transparent, and sustainable banking solutions."
-  }
-];
+    const bankingContent = {
+  title: "Role of Banks",
+  description: "Banks serve as the cornerstone of the modern financial ecosystem, facilitating economic growth and stability through systematic financial intermediation and service delivery.",
+  paragraphs: [
+    "Financial institutions play a pivotal role in capital formation by channeling savings into productive investments, thereby accelerating economic development and creating sustainable value chains across sectors.",
+    "Through robust regulatory frameworks and advanced risk management systems, banks ensure monetary stability while providing secure platforms for domestic and international financial operations."
+  ],
+  services: [
+    "Mobilizing Savings: Aggregating deposits from retail and institutional clients to create lending pools.",
+    "Providing Credit: Extending customized financing solutions to businesses, entrepreneurs, and individual consumers.",
+    "Facilitating Payments: Operating secure digital and traditional payment gateways for seamless fund transfers.",
+    "Financial Advisory: Delivering comprehensive wealth management and strategic investment guidance.",
+    "Liquidity Creation: Expanding money supply through responsible credit allocation and fractional reserve banking."
+  ]
+};
 
-const coreValues = [
-  {
-    id: 1,
-    title: "Integrity",
-    description: "We uphold honesty, fairness, and responsibility in every transaction."
-  },
-  {
-    id: 2, 
-    title: "Innovation",
-    description: "We continuously evolve our products to meet tomorrow's financial needs."
-  },
-  {
-    id: 3,
-    title: "Customer-First", 
-    description: "Every decision begins and ends with the customer experience."
-  },
-  {
-    id: 4,
-    title: "Security",
-    description: "We safeguard your data and funds with world-class digital protection."
-  },
-  {
-    id: 5,
-    title: "Sustainability",
-    description: "We invest in eco-friendly initiatives for a greener, better future."
-  }
-];
-
-    return(
-        <div className="flex min-w-screen min-h-screen flex-row bg-rose-100">
-            <div className="flex flex-col justify-center items-center w-[60%] max-w-md p-6 bg-rose-100 bg-opacity-100 rounded-lg shadow-md">
-                {aboutContent.map((items)=>
-                <div className='flex flex-col m-5' key={items.id}>
-                    <h1 className='font-bold'>{items.title}</h1>
-                    <p className='text-sm'>{items.content}</p>
-                </div>)}
-            </div>
-                    
-            <div>
-                  <img src={Overviewimage} alt="OverviewImage" className=" h-screen" />
-            </div>
-
-            <div className="flex flex-col justify-center items-center w-[60%] max-w-md p-6 bg-rose-100 bg-opacity-100 rounded-lg shadow-md">
-                  {coreValues.map((items)=> 
-                  <div className='flex flex-col m-5' key={items.id}>
-                    <h1 className='font-bold'>{items.title}</h1>
-                    <p className='text-sm'>{items.description}</p>
+  return (
+    <div className="flex flex-row min-h-screen bg-[#06332B] text-white">
+                <div className="flex flex-row  ">
+                    {/* Left Section - Text */}
+                    <div className="flex-1 pl-10 max-w-xl">
+                        <div >
+                            <img src={bankLogo} alt="Logo" className="w-20 h-12 m-16" />
+                            <h1 className="text-5xl font-semibold mb-8 m-20 pt-10  max-w-4xl">{bankingContent.title}</h1>
+                            <p className="text-gray-200 leading-relaxed  mx-20">
+                                {bankingContent.description}
+                            </p>
+                        </div>
+                        <div className='mx-20 my-10'>
+                            {bankingContent.paragraphs.map((paragraph, index) => (
+                                <p key={index} className="text-gray-200 leading-relaxed max-w-2xl">
+                                    {paragraph}
+                                </p>
+                            ))}
+                        </div>    
+                    </div>               
+                </div>
+                <div className='flex flex-col justify-center ml-20 pl-20'>
+                      <div className=''>
+                            {bankingContent.services.map((services,index) => 
+                            <div key={index} className="text-gray-200 l text-sm max-w-3xl mt-2">
+                              <li>
+                                <ul>{services}</ul>
+                              </li>
+                            </div>
+                            )}
+                       </div>
+                            
                   </div>
-                  )}
             </div>
-        </div>
-    )
+  );
 }
